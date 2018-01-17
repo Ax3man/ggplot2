@@ -2,6 +2,10 @@
 
 ## New features
 
+* `annotate` now also accepts `yintercept` and `xintercept`, which makes it 
+  easier to annotate with `geom_hline` and `geom_vline`, even when using 
+  facets (@Axeman).
+
 * `aes()` now supports quasiquotation so that you can use `!!`, `!!!`, and
   `:=`. (ggplot2 does not currently support full tidy evaluation because
   when I wrote ggplot2 my understanding of NSE was quite flawed, and hence

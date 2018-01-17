@@ -12,8 +12,8 @@
 #' affect the legend.
 #'
 #' @param geom name of geom to use for annotation
-#' @param x,y,xmin,ymin,xmax,ymax,xend,yend positioning aesthetics -
-#'   you must specify at least one of these.
+#' @param x,y,xmin,ymin,xmax,ymax,xend,yend,xintercept,yintercept positioning
+#'   aesthetics - you must specify at least one of these.
 #' @inheritParams layer
 #' @inheritParams geom_point
 #' @export
@@ -27,6 +27,7 @@
 #'   colour = "blue")
 #' p + annotate("pointrange", x = 3.5, y = 20, ymin = 12, ymax = 28,
 #'   colour = "red", size = 1.5)
+#' p + facet_grid(~cyl) + annotate("hline", yintercept = mean(mtcars$mpg))
 #'
 #' p + annotate("text", x = 2:3, y = 20:21, label = c("my label", "label 2"))
 #'
@@ -35,12 +36,13 @@
 #' p + annotate("text", x = 4, y = 25,
 #'   label = "paste(italic(R) ^ 2, \" = .75\")", parse = TRUE)
 annotate <- function(geom, x = NULL, y = NULL, xmin = NULL, xmax = NULL,
-                     ymin = NULL, ymax = NULL, xend = NULL, yend = NULL, ...,
+                     ymin = NULL, ymax = NULL, xend = NULL, yend = NULL,
+                     xintercept = NULL, yintercept = NULL, ...,
                      na.rm = FALSE) {
 
   position <- compact(list(
-    x = x, xmin = xmin, xmax = xmax, xend = xend,
-    y = y, ymin = ymin, ymax = ymax, yend = yend
+    x = x, xmin = xmin, xmax = xmax, xend = xend, xintercept = xintercept,
+    y = y, ymin = ymin, ymax = ymax, yend = yend, yintercept = yintercept
   ))
   aesthetics <- c(position, list(...))
 
